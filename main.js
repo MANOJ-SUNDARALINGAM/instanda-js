@@ -1,27 +1,20 @@
 (function () {
+  console.log("INSTANDA main.js loaded");
 
-  function makeReadonly() {
-    var el = document.getElementById("QQ_Property_AgeofRoof_NUM");
-    if (!el) return;
+  function setRoofAgeReadonly() {
+    var input = document.getElementById("QQ_Property_AgeofRoof_NUM");
+    if (!input) return;
 
-    el.readOnly = true;
-    el.setAttribute("readonly", "readonly");
-    el.classList.add("readonly");
+    // Apply readonly
+    input.readOnly = true;
+    input.setAttribute("readonly", "readonly");
+    input.classList.add("readonly");
   }
 
-  // Run once in case element already exists
-  makeReadonly();
+  // Run once after a short delay
+  setTimeout(setRoofAgeReadonly, 1500);
 
-  // Observe DOM changes (INSTANDA / Knockout safe)
-  var observer = new MutationObserver(function () {
-    makeReadonly();
-  });
-
-  observer.observe(document.body, {
-    childList: true,
-    subtree: true
-  });
-
-  console.log("INSTANDA readonly observer active");
+  // Keep enforcing because INSTANDA / Knockout re-renders
+  setInterval(setRoofAgeReadonly, 500);
 
 })();
