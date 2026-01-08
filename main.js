@@ -20,3 +20,9 @@ alert("External INSTANDA JS loaded");
   });
 
 })();
+//
+var roofAgeField = document.getElementById("QQ_Property_AgeofRoof_NUM");
+if (roofAgeField) {
+    roofAgeField.readOnly = true;
+    roofAgeField.classList.add("readonly");
+}
