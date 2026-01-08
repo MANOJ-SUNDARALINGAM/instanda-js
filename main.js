@@ -1,3 +1,5 @@
+alert("External INSTANDA JS loaded");
+
 (function () {
   console.log("INSTANDA external JS loaded");
 
