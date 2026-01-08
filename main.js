@@ -1,45 +1,24 @@
 (function () {
-  console.log("INSTANDA main.js active");
+  // Simple console test
+  console.log("✅ INSTANDA GitHub JS connection successful at " + new Date().toLocaleTimeString());
 
-  var ROOF_AGE_ID = "QQ_Property_AgeofRoof_NUM";
+  // Optional: temporary visual indicator on the page
+  var indicator = document.createElement("div");
+  indicator.textContent = "INSTANDA GitHub JS Connected ✅";
+  indicator.style.position = "fixed";
+  indicator.style.bottom = "10px";
+  indicator.style.right = "10px";
+  indicator.style.backgroundColor = "#4CAF50";
+  indicator.style.color = "#fff";
+  indicator.style.padding = "5px 10px";
+  indicator.style.borderRadius = "5px";
+  indicator.style.zIndex = 9999;
+  indicator.style.fontSize = "12px";
+  document.body.appendChild(indicator);
 
-  function isRoofAgeField(target) {
-    return target && target.id === ROOF_AGE_ID;
-  }
-
-  // Block keyboard input
-  document.addEventListener("keydown", function (e) {
-    if (isRoofAgeField(e.target)) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-    }
-  }, true);
-
-  // Block typing / knockout updates
-  document.addEventListener("input", function (e) {
-    if (isRoofAgeField(e.target)) {
-      e.target.value = e.target.value;
-      e.preventDefault();
-      e.stopImmediatePropagation();
-    }
-  }, true);
-
-  // Block paste
-  document.addEventListener("paste", function (e) {
-    if (isRoofAgeField(e.target)) {
-      e.preventDefault();
-      e.stopImmediatePropagation();
-    }
-  }, true);
-
-  // Cosmetic readonly (best effort)
-  setInterval(function () {
-    var el = document.getElementById(ROOF_AGE_ID);
-    if (el) {
-      el.readOnly = true;
-      el.setAttribute("readonly", "readonly");
-      el.classList.add("readonly");
-    }
-  }, 500);
+  // Remove the indicator after 5 seconds
+  setTimeout(function () {
+    document.body.removeChild(indicator);
+  }, 5000);
 
 })();
